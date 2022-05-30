@@ -1,2 +1,22 @@
 # rope3d-dataset-tools
-including visualization and evaluation
+# Introduction
+This repo is for releasing the Rope3D Dataset, which is the first high-diversity challenging **Ro**adside **Pe**rception 3D dataset- **Rope3D** from a novel view. The dataset consists of 50k images and over 1.5M 3D objects in various scenes, which are captured under different settings including various cameras with ambiguous mounting positions, camera specifications, viewpoints, and different environmental conditions.
+
+The comparison between the roadside view and the conventional vehicle view can be see from the Figure below.
+
+<img src="https://github.com/shuluoshu/Rope3D-Dataset/blob/main/Examples/fig_different_view.png" width="600px">
+
+Figure 1. The comparison of (a) frontal view and (b) roadside camera view with a pitch angle. The car view focuses more on the frontal area whereas the roadside camera observes the scene in a long-term and large-range manner. Vehicles can be easily occluded by closer objects in frontal view but the roadside view alleviates the risk. For example, for car-view (a), the white van is occluded by the black jeep whereas in roadside view (b) they are both visible, corresponding to the white and pink 3D boxes in (c). The triangle mark denotes the same LiDAR-mounted vehicle.
+
+
+# Examples
+![image](https://github.com/shuluoshu/Rope3D-Dataset/blob/main/Examples/fig_examples_weather.png)
+
+
+# Detailed Description and Download Website.
+Please refer to :  (will be ready soon.)
+[[Rope3D Dataset]](https://thudair.baai.ac.cn/index)
+
+
+# Citation
+If you find the dataset useful in your research, please cite using the following BibTex entry.
