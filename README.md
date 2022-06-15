@@ -13,9 +13,16 @@ Figure 1. The comparison of (a) frontal view and (b) roadside camera view with a
 
 
 # Detailed Description and Download Website.
-Please refer to :  (will be ready soon.)
-[[Rope3D Dataset]](https://thudair.baai.ac.cn/index)
+Please refer to :  [[Rope3D Dataset]](https://thudair.baai.ac.cn/index)
 
 
 # Citation
 If you find the dataset useful in your research, please cite using the following BibTex entry.
+@inproceedings{ye2022rope3d,
+  title={Rope3D: The Roadside Perception Dataset for Autonomous Driving and Monocular 3D Object Detection Task},
+  author={Ye, Xiaoqing and Shu, Mao and Li, Hanyu and Shi, Yifeng and Li, Yingying and Wang, Guangjie and Tan, Xiao and Ding, Errui},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={21341--21350},
+  year={2022}
+}
+
