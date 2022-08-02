@@ -53,7 +53,7 @@ def compute_similarity(list_res_dict):
     count = 0
     ACS_list = []
     AOS_list = []
-    ASS_list = []
+    AAS_list = []
     AGD4_class_aware_list = []
     AGD4_abs_list = []
     AGD4_relative_list = []
@@ -61,22 +61,22 @@ def compute_similarity(list_res_dict):
         count += 1
         ACS_list.append(1 - res['relative_groundcenter'])
         AOS_list.append((1 + res['cos_orientation']) /2)
-        ASS_list.append(1 - res['relative_LW'])
+        AAS_list.append(1 - res['relative_LW'])
         AGD4_abs_list.append( res['delta_bottom4'])
         AGD4_relative_list.append( 1 - res['relative_bottom4'])
     ACS = np.sum(np.array(ACS_list)) / count
     AOS = np.sum(np.array(AOS_list)) / count
-    ASS = np.sum(np.array(ASS_list)) / count
+    AAS = np.sum(np.array(AAS_list)) / count
     AGD4_abs = np.sum(np.array(AGD4_abs_list)) / count
     AGD4_Q99 = np.percentile(np.array(AGD4_abs_list), 99)
     AGD4_Q90 = np.percentile(np.array(AGD4_abs_list), 90)
     AGD4_relative = np.sum(np.array(AGD4_relative_list)) / count
     
     error_txt = '{:6}\t{:6}\t{:6}\t{:6}\t{:6}\t{:6}\t{:6}\n{:5.3f}\t{:5.3f}\t{:5.3f}\t{:5.3f}\t{:5.3f}\t{:5.3f}\t{:5.3f}'.format(
-	'ACS', 'AOS', 'ASS', 'AGD4_abs', 'AGD4_Q90', 'AGD4_Q99', 'AGD4_rel',
-         ACS, AOS, ASS, AGD4_abs, AGD4_Q90, AGD4_Q99, AGD4_relative)
+	'ACS', 'AOS', 'AAS', 'AGD4_abs', 'AGD4_Q90', 'AGD4_Q99', 'AGD4_rel',
+         ACS, AOS, AAS, AGD4_abs, AGD4_Q90, AGD4_Q99, AGD4_relative)
     
-    return [error_txt, [ACS, AOS, ASS, AGD4_abs, AGD4_Q90, AGD4_Q99, AGD4_relative], ACS_list, AOS_list, ASS_list, AGD4_abs_list, AGD4_relative_list]
+    return [error_txt, [ACS, AOS, AAS, AGD4_abs, AGD4_Q90, AGD4_Q99, AGD4_relative], ACS_list, AOS_list, AAS_list, AGD4_abs_list, AGD4_relative_list]
 
 def project_3d(p2, location, hwl, ry3d, de_norm):
     """
@@ -501,8 +501,8 @@ def evaluate_SurveillanceCamera(eval_range_min=0, eval_range_max=120, eval_range
            increase = 0
     print("--------------allsum: ", allsum)
     if allsum < 1: return
-    [similarity_txt, [ACS, AOS, ASS, AGD4_abs, AGD4_Q90, AGD4_Q99, AGD4_relative],
-     ACS_list, AOS_list, ASS_list, AGD4_abs_list, AGD4_relative_list] = compute_similarity(list_similarity)
+    [similarity_txt, [ACS, AOS, AAS, AGD4_abs, AGD4_Q90, AGD4_Q99, AGD4_relative],
+     ACS_list, AOS_list, AAS_list, AGD4_abs_list, AGD4_relative_list] = compute_similarity(list_similarity)
 
     list_rerr_all = [rerr_dist[0] for rerr_dist in list_rerr_dist
                      if rerr_dist[1] > eval_range_min and rerr_dist[1] <= eval_range_max]#0 is relative error
@@ -512,7 +512,7 @@ def evaluate_SurveillanceCamera(eval_range_min=0, eval_range_max=120, eval_range
                      if rerr_dist[1] > eval_range_min and rerr_dist[1] <= eval_range_max]#2 is 4points average error
     list_all_ACS = [] 
     list_all_AOS = [] 
-    list_all_ASS = [] 
+    list_all_AAS = [] 
     list_all_AGD4_abs = [] 
     list_all_AGD4_relative = [] 
 
@@ -522,14 +522,14 @@ def evaluate_SurveillanceCamera(eval_range_min=0, eval_range_max=120, eval_range
             valid_index_list.append(valid_index)
             list_all_ACS.append(ACS_list[valid_index])
             list_all_AOS.append(AOS_list[valid_index])
-            list_all_ASS.append(ASS_list[valid_index])
+            list_all_AAS.append(AAS_list[valid_index])
             list_all_AGD4_abs.append(AGD4_abs_list[valid_index])
             list_all_AGD4_relative.append(AGD4_relative_list[valid_index])
 
     list_range = range(eval_range_min, eval_range_max, eval_range_step)
     list_all_ACS_var_range = [[], [], [], []]
     list_all_AOS_var_range = [[], [], [], []] # * len(list_range) 
-    list_all_ASS_var_range = [[], [], [], []] # * len(list_range)
+    list_all_AAS_var_range = [[], [], [], []] # * len(list_range)
     list_all_AGD4_abs_var_range = [[], [], [], []] # * len(list_range)
     list_all_AGD4_relative_var_range = [[], [], [], []] # * len(list_range) 
     #pdb.set_trace()
@@ -545,7 +545,7 @@ def evaluate_SurveillanceCamera(eval_range_min=0, eval_range_max=120, eval_range
         else: continue
         list_all_ACS_var_range[cur_ind].append(ACS_list[valid_index])
         list_all_AOS_var_range[cur_ind].append(AOS_list[valid_index])
-        list_all_ASS_var_range[cur_ind].append(ASS_list[valid_index])
+        list_all_AAS_var_range[cur_ind].append(AAS_list[valid_index])
         list_all_AGD4_abs_var_range[cur_ind].append(AGD4_abs_list[valid_index])
         list_all_AGD4_relative_var_range[cur_ind].append(AGD4_relative_list[valid_index])
     
@@ -573,15 +573,15 @@ def evaluate_SurveillanceCamera(eval_range_min=0, eval_range_max=120, eval_range
 ==============================================================
 Table of Relative Error
 ==============================================================
-range\ttotal\tR_s\tACS\tAOS\tASS\tAGD-rel\tAdded\tAGD4-90\tAGD-99\tAGD4-m\tmean-m\tQ99-m\t
+range\ttotal\tR_s\tACS\tAOS\tAAS\tAGS\tAdded\tAGD4-90\tAGD-99\tAGD4-m\tmean-m\tQ99-m\t
 all\t{:d}\t{:s}\t{:.3f}\t{:.3f}\t{:.3f}\t{:.3f}\t{:.3f}\t{:.3f}\t{:.3f}\t{:.3f}\t{:.3f}\t{:.3f}
     '''.format(len(list_rerr_all),
     R_score,
     ACS, 
     AOS, 
-    ASS, 
+    AAS, 
     AGD4_relative,
-    (ACS + AOS + ASS + AGD4_relative) / 4.0,
+    (ACS + AOS + AAS + AGD4_relative) / 4.0,
     AGD4_abs, 
     AGD4_Q90, 
     AGD4_Q99, 
@@ -609,10 +609,10 @@ all\t{:d}\t{:s}\t{:.3f}\t{:.3f}\t{:.3f}\t{:.3f}\t{:.3f}\t{:.3f}\t{:.3f}\t{:.3f}\
             R_score, 
             np.sum(np.array(list_all_ACS_var_range[cur_ind])) / len(list_all_ACS_var_range[cur_ind]),
             np.sum(np.array(list_all_AOS_var_range[cur_ind])) / len(list_all_AOS_var_range[cur_ind]),
-            np.sum(np.array(list_all_ASS_var_range[cur_ind])) / len(list_all_ASS_var_range[cur_ind]),
+            np.sum(np.array(list_all_AAS_var_range[cur_ind])) / len(list_all_AAS_var_range[cur_ind]),
             np.sum(np.array(list_all_AGD4_relative_var_range[cur_ind])) / len(list_all_AGD4_relative_var_range[cur_ind]),
             np.sum(np.array(list_all_ACS_var_range[cur_ind] + list_all_AOS_var_range[cur_ind] + 
-               list_all_ASS_var_range[cur_ind] + list_all_AGD4_relative_var_range[cur_ind])) / len(list_all_ACS_var_range[cur_ind]) / 4.0,
+               list_all_AAS_var_range[cur_ind] + list_all_AGD4_relative_var_range[cur_ind])) / len(list_all_ACS_var_range[cur_ind]) / 4.0,
             np.sum(np.array(list_all_AGD4_abs_var_range[cur_ind])) / len(list_all_AGD4_abs_var_range[cur_ind]),
             np.percentile(list_all_AGD4_abs_var_range[cur_ind], 90),
             np.percentile(list_all_AGD4_abs_var_range[cur_ind], 99),
