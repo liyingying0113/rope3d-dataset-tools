@@ -129,11 +129,15 @@ def project_3d(p2, x3d, y3d, z3d, w3d, h3d, l3d, ry3d, de_norm):
     # bounding box in object co-ordinate
     corners_3d = np.array([x_corners, y_corners, z_corners])
 
-    # rotate
-    corners_3d = R.dot(corners_3d)
-    R2 = np.array([[1, 0, 0],
-                   [0, -de_norm[1], +de_norm[2]],
-                   [0, -de_norm[2], -de_norm[1]]])
+    # get the rotation matrix from ground plane equation
+    a, b, c = - de_norm[0], - de_norm[2], - de_norm[3]
+    r12, r22, r32 = a, b, c
+    r11, r21, r31 = 1, - a / b, 0
+    div = a ** 2 + b ** 2
+    r13, r23, r33 = (- a * c) / div, (-b * c ) / div, 1
+    R2 = np.array([[r11, r12, r13], [r21, r22, r23], [r31, r32, r33]], dtype=np.float32)
+    R2 = R2 / np.linalg.norm(R2, axis=0)
+    
     corners_3d = R2.dot(corners_3d)
     # translate
     corners_3d += np.array([x3d, y3d, z3d]).reshape((3, 1))
