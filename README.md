@@ -13,7 +13,12 @@ Figure 1. The comparison of (a) frontal view and (b) roadside camera view with a
 
 
 # Detailed Description and Download Website.
-Please refer to :  [[Rope3D Dataset]](https://thudair.baai.ac.cn/index)
+Please refer to :  [[Rope3D Dataset]](https://thudair.baai.ac.cn/rope)
+Note that concurrently only regions within China can access to the dataset due to the policy constraint.
+
+# Tools
+See the ``show_tools'' for visualization the 3D bounding boxes.
+See the ``eval_tools'' for evaluation your results.
 
 
 # Citation
