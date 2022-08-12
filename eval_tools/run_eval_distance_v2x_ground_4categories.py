@@ -573,7 +573,7 @@ def evaluate_SurveillanceCamera(eval_range_min=0, eval_range_max=120, eval_range
 ==============================================================
 Table of Relative Error
 ==============================================================
-range\ttotal\tR_s\tACS\tAOS\tAAS\tAGS\tAdded\tAGD4-90\tAGD-99\tAGD4-m\tmean-m\tQ99-m\t
+range\ttotal\tR_s\tACS\tAOS\tAAS\tAGS\tAdded\tAGD4-m\tAGD4-90\tAGD-99\tmean-m\tQ99-m\t
 all\t{:d}\t{:s}\t{:.3f}\t{:.3f}\t{:.3f}\t{:.3f}\t{:.3f}\t{:.3f}\t{:.3f}\t{:.3f}\t{:.3f}\t{:.3f}
     '''.format(len(list_rerr_all),
     R_score,
