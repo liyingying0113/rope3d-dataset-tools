@@ -1,4 +1,4 @@
-**This is the repo for Rope3D  Dataset (CVPR2022: Rope3D: The Roadside Perception Dataset for Autonomous Driving and Monocular 3D Object Detection Task).**
+**This is the repo for Rope3D  Dataset (CVPR2022: Rope3D: The Roadside Perception Dataset for Autonomous Driving and Monocular 3D Object Detection Task).** [[PDF]](https://openaccess.thecvf.com/content/CVPR2022/papers/Ye_Rope3D_The_Roadside_Perception_Dataset_for_Autonomous_Driving_and_Monocular_CVPR_2022_paper.pdf)
 
 
 # Introduction
