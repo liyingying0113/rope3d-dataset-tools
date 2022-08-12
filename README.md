@@ -1,3 +1,6 @@
+**This is the repo for Rope3D  Dataset (CVPR2022: Rope3D: The Roadside Perception Dataset for Autonomous Driving and Monocular 3D Object Detection Task).**
+
+
 # Introduction
 This repo is for releasing the Rope3D Dataset, which is the first high-diversity challenging **Ro**adside **Pe**rception 3D dataset- **Rope3D** from a novel view. The dataset consists of 50k images and over 1.5M 3D objects in various scenes, which are captured under different settings including various cameras with ambiguous mounting positions, camera specifications, viewpoints, and different environmental conditions.
 
