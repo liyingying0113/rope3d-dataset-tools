@@ -17,9 +17,9 @@ Please refer to :  [[Rope3D Dataset]](https://thudair.baai.ac.cn/rope)
 
 Note that concurrently only regions within China can access to the dataset due to the policy constraint.
 
-# Tools
-- See the `show_tools` for visualization the 3D bounding boxes.
-- See the `eval_tools` for evaluation your results.
+# Developing Tools
+- See the `show_tools` folder for visualization the 3D bounding boxes.
+- See the `eval_tools` folder for evaluating your results.
 
 
 # Citation
